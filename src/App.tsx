@@ -25,7 +25,7 @@ function PublicOnlyRoute({ children }: { children: React.ReactNode }) {
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+    <ThemeProvider attribute="class" forcedTheme="dark">
       <TooltipProvider>
         <Toaster />
         <Sonner />

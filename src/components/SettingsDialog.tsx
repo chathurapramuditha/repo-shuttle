@@ -5,8 +5,8 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Settings, Moon, Sun, Monitor, Palette, User, Bell, Layers } from "lucide-react";
-import { useTheme } from "next-themes";
+import { Settings, User, Bell, Layers } from "lucide-react";
+
 // Icons are properly imported from lucide-react
 
 // Context for managing auth mode state
@@ -34,7 +34,7 @@ export const useAuthMode = () => {
 
 export function SettingsDialog() {
   const [open, setOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
+  
   const [notifications, setNotifications] = useState(true);
   const [autoReports, setAutoReports] = useState(false);
   
@@ -69,48 +69,6 @@ export function SettingsDialog() {
         </DialogHeader>
         
         <div className="space-y-6 pt-4">
-          {/* Appearance Settings */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-base">
-                <Palette className="h-4 w-4" />
-                Appearance
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="theme">Color Theme</Label>
-                <Select value={theme} onValueChange={setTheme}>
-                  <SelectTrigger className="bg-background text-foreground border-border">
-                    <SelectValue placeholder="Select theme" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="light">
-                      <div className="flex items-center gap-2">
-                        <Sun className="h-4 w-4" />
-                        Light
-                      </div>
-                    </SelectItem>
-                    <SelectItem value="dark">
-                      <div className="flex items-center gap-2">
-                        <Moon className="h-4 w-4" />
-                        Dark
-                      </div>
-                    </SelectItem>
-                    <SelectItem value="system">
-                      <div className="flex items-center gap-2">
-                        <Monitor className="h-4 w-4" />
-                        System
-                      </div>
-                    </SelectItem>
-                  </SelectContent>
-                </Select>
-                <p className="text-xs text-muted-foreground">
-                  Choose how the interface looks. System theme follows your device's settings.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
 
           {/* Notification Settings */}
           <Card>
