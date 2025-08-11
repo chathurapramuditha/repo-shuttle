@@ -177,6 +177,10 @@ export type Database = {
         }
         Returns: boolean
       }
+      is_finance: {
+        Args: { _user_id: string }
+        Returns: boolean
+      }
       is_hr: {
         Args: { _user_id: string }
         Returns: boolean
