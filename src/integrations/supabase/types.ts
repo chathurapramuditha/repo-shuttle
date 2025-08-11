@@ -79,6 +79,27 @@ export type Database = {
           },
         ]
       }
+      manager_relationships: {
+        Row: {
+          created_at: string
+          employee_id: string
+          id: string
+          manager_id: string
+        }
+        Insert: {
+          created_at?: string
+          employee_id: string
+          id?: string
+          manager_id: string
+        }
+        Update: {
+          created_at?: string
+          employee_id?: string
+          id?: string
+          manager_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string
@@ -154,6 +175,14 @@ export type Database = {
           _user_id: string
           _role: Database["public"]["Enums"]["admin_role"]
         }
+        Returns: boolean
+      }
+      is_hr: {
+        Args: { _user_id: string }
+        Returns: boolean
+      }
+      is_manager_of: {
+        Args: { _manager_id: string; _employee_id: string }
         Returns: boolean
       }
     }
