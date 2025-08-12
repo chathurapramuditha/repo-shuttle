@@ -185,8 +185,16 @@ export type Database = {
         Args: { _user_id: string }
         Returns: boolean
       }
+      is_in_departments: {
+        Args: { _user_id: string; _departments: string[] }
+        Returns: boolean
+      }
       is_manager_of: {
         Args: { _manager_id: string; _employee_id: string }
+        Returns: boolean
+      }
+      is_supply_chain: {
+        Args: { _user_id: string }
         Returns: boolean
       }
     }

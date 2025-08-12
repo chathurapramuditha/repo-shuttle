@@ -198,14 +198,53 @@ const Auth = () => {
     setIsLoading(false);
   };
 
-  // Department options with automatic role assignment
+  // Department options with automatic role assignment (expanded)
   const departmentOptions = [
-    { value: 'IT', label: 'IT Department', defaultRole: 'admin' },
-    { value: 'Finance', label: 'Finance Department', defaultRole: 'admin' },
-    { value: 'Supply Chain', label: 'Supply Chain Department', defaultRole: 'editor' },
-    { value: 'Procurement', label: 'Procurement Department', defaultRole: 'uploader' },
-    { value: 'Operations', label: 'Operations Department', defaultRole: 'viewer' },
-    { value: 'Management', label: 'Management', defaultRole: 'admin' }
+    // Existing core departments
+    { value: 'IT', label: 'IT', defaultRole: 'admin' },
+    { value: 'Finance', label: 'Finance', defaultRole: 'admin' },
+    { value: 'Supply Chain', label: 'Supply Chain', defaultRole: 'editor' },
+    { value: 'Procurement', label: 'Procurement', defaultRole: 'uploader' },
+    { value: 'Operations', label: 'Operations', defaultRole: 'viewer' },
+    { value: 'Management', label: 'Management', defaultRole: 'admin' },
+
+    // Hospital-provided departments
+    { value: 'OPD', label: 'OPD', defaultRole: 'viewer' },
+    { value: 'FINANCE', label: 'FINANCE', defaultRole: 'admin' },
+    { value: 'PR', label: 'PR', defaultRole: 'viewer' },
+    { value: 'Marketing', label: 'Marketing', defaultRole: 'viewer' },
+    { value: 'ETU', label: 'ETU', defaultRole: 'viewer' },
+    { value: 'PHARMACY', label: 'PHARMACY', defaultRole: 'viewer' },
+    { value: 'PHLEBOTOMY', label: 'PHLEBOTOMY', defaultRole: 'viewer' },
+    { value: 'Kitchen', label: 'Kitchen', defaultRole: 'viewer' },
+    { value: 'Ultra Sound', label: 'Ultra Sound', defaultRole: 'viewer' },
+    { value: 'Araliya Ward', label: 'Araliya Ward', defaultRole: 'viewer' },
+    { value: 'Radiology', label: 'Radiology', defaultRole: 'viewer' },
+    { value: 'Call Center', label: 'Call Center', defaultRole: 'viewer' },
+    { value: 'Health Check', label: 'Health Check', defaultRole: 'viewer' },
+    { value: 'Medical Services', label: 'Medical Services', defaultRole: 'viewer' },
+    { value: 'Assistant Manager Operations', label: 'Assistant Manager Operations', defaultRole: 'viewer' },
+    { value: 'Nelum Ward', label: 'Nelum Ward', defaultRole: 'viewer' },
+    { value: 'Physiotheraphy', label: 'Physiotheraphy', defaultRole: 'viewer' },
+    { value: 'Billing', label: 'Billing', defaultRole: 'editor' },
+    { value: 'Lab', label: 'Lab', defaultRole: 'viewer' },
+    { value: 'Drug Store', label: 'Drug Store', defaultRole: 'uploader' },
+    { value: 'ENG', label: 'ENG', defaultRole: 'viewer' },
+    { value: 'Stores', label: 'Stores', defaultRole: 'uploader' },
+    { value: 'ADMINISTRATION', label: 'ADMINISTRATION', defaultRole: 'admin' },
+    { value: 'DTU', label: 'DTU', defaultRole: 'viewer' },
+    { value: 'MICU', label: 'MICU', defaultRole: 'viewer' },
+    { value: 'ICU', label: 'ICU', defaultRole: 'viewer' },
+    { value: 'Orchid', label: 'Orchid', defaultRole: 'viewer' },
+    { value: 'Theater', label: 'Theater', defaultRole: 'viewer' },
+    { value: 'Home Care', label: 'Home Care', defaultRole: 'viewer' },
+    { value: 'Facility', label: 'Facility', defaultRole: 'viewer' },
+    { value: 'HR', label: 'HR', defaultRole: 'viewer' },
+    { value: 'Quality', label: 'Quality', defaultRole: 'viewer' },
+    { value: 'Adora', label: 'Adora', defaultRole: 'viewer' },
+    { value: 'EHR', label: 'EHR', defaultRole: 'viewer' },
+    { value: 'Admin', label: 'Admin', defaultRole: 'admin' },
+    { value: 'Kitchen Store', label: 'Kitchen Store', defaultRole: 'uploader' },
   ];
 
   return (
