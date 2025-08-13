@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+
 import { Truck, User, MessageSquare, Send } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
@@ -28,14 +28,6 @@ interface SupplyChainInterfaceProps {
   onClose: () => void;
 }
 
-const supplyChainTeamMembers = [
-  "John Smith",
-  "Sarah Johnson", 
-  "Mike Chen",
-  "Emily Rodriguez",
-  "David Kim",
-  "Lisa Wang"
-];
 
 export function SupplyChainInterface({ invoice, onUpdate, onClose }: SupplyChainInterfaceProps) {
   const [assignedPerson, setAssignedPerson] = useState(invoice.assigned_to_person || '');
@@ -45,7 +37,7 @@ export function SupplyChainInterface({ invoice, onUpdate, onClose }: SupplyChain
 
   const handleAssignToSupplyChain = async () => {
     if (!assignedPerson) {
-      alert('Please select a team member to assign this invoice to');
+      alert('Please enter a name to assign this invoice');
       return;
     }
 
@@ -168,18 +160,12 @@ export function SupplyChainInterface({ invoice, onUpdate, onClose }: SupplyChain
           <div className="space-y-3">
             <div>
               <Label htmlFor="assigned-person">Assign to Team Member</Label>
-              <Select value={assignedPerson} onValueChange={setAssignedPerson}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select team member" />
-                </SelectTrigger>
-                <SelectContent>
-                  {supplyChainTeamMembers.map((member) => (
-                    <SelectItem key={member} value={member}>
-                      {member}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <Input
+                id="assigned-person"
+                placeholder="Type a name"
+                value={assignedPerson}
+                onChange={(e) => setAssignedPerson(e.target.value)}
+              />
             </div>
 
             {!isAssigned && (

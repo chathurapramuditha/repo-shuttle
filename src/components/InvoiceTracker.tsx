@@ -334,6 +334,20 @@ export function InvoiceTracker() {
                 <p className="text-sm text-muted-foreground">
                   Welcome back, {profile?.first_name} {profile?.last_name}
                 </p>
+                <div className="mt-1 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+                  {userRole?.role && (
+                    <Badge variant="secondary" className="flex items-center gap-1">
+                      <User className="h-3 w-3" />
+                      {userRole.role}
+                    </Badge>
+                  )}
+                  {profile?.department && (
+                    <Badge variant="secondary" className="flex items-center gap-1">
+                      <Building className="h-3 w-3" />
+                      {profile.department}
+                    </Badge>
+                  )}
+                </div>
               </div>
             </div>
             <div className="flex items-center gap-2">

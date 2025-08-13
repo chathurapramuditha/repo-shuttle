@@ -5,7 +5,9 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Settings, User, Bell, Layers } from "lucide-react";
+import { Settings, User, Bell, Layers, Sun, Moon } from "lucide-react";
+
+import { useTheme } from "next-themes";
 
 // Icons are properly imported from lucide-react
 
@@ -34,6 +36,7 @@ export const useAuthMode = () => {
 
 export function SettingsDialog() {
   const [open, setOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
   
   const [notifications, setNotifications] = useState(true);
   const [autoReports, setAutoReports] = useState(false);
@@ -69,6 +72,29 @@ export function SettingsDialog() {
         </DialogHeader>
         
         <div className="space-y-6 pt-4">
+
+          {/* Appearance */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 text-base">
+                <Sun className="h-4 w-4" />
+                Appearance
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-2">
+              <Label htmlFor="theme">Theme</Label>
+              <Select value={theme ?? 'system'} onValueChange={(v) => setTheme(v)}>
+                <SelectTrigger className="bg-background text-foreground border-border">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="system">System</SelectItem>
+                  <SelectItem value="light">Light</SelectItem>
+                  <SelectItem value="dark">Dark</SelectItem>
+                </SelectContent>
+              </Select>
+            </CardContent>
+          </Card>
 
           {/* Notification Settings */}
           <Card>
