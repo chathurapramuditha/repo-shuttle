@@ -316,6 +316,7 @@ export function InvoiceTracker() {
     }
   };
 
+  const isSuperAdmin = userRole?.role === 'super_admin';
   const canEdit = userRole?.role && ['super_admin', 'admin', 'lite_admin', 'editor'].includes(userRole.role);
   const canDelete = userRole?.role && ['super_admin', 'admin'].includes(userRole.role);
   const canUpload = userRole?.role && ['super_admin', 'admin', 'lite_admin', 'editor', 'uploader'].includes(userRole.role);
@@ -346,13 +347,13 @@ export function InvoiceTracker() {
       </header>
 
       <main className="container mx-auto px-4 py-6">
-        <Tabs defaultValue="dashboard" className="w-full">
-          <TabsList className="grid w-full grid-cols-4">
-            <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
-            <TabsTrigger value="finance">Finance</TabsTrigger>
-            <TabsTrigger value="supply-chain">Supply Chain</TabsTrigger>
-            <TabsTrigger value="admin">Admin</TabsTrigger>
-          </TabsList>
+          <Tabs defaultValue="dashboard" className="w-full">
+            <TabsList className={`grid w-full ${isSuperAdmin ? 'grid-cols-4' : 'grid-cols-3'}`}>
+              <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
+              <TabsTrigger value="finance">Finance</TabsTrigger>
+              <TabsTrigger value="supply-chain">Supply Chain</TabsTrigger>
+              {isSuperAdmin && <TabsTrigger value="admin">Admin</TabsTrigger>}
+            </TabsList>
 
           <TabsContent value="dashboard" className="space-y-6">
             {/* Filters */}
@@ -698,9 +699,11 @@ export function InvoiceTracker() {
             )}
           </TabsContent>
 
-          <TabsContent value="admin">
-            <AdminPanel />
-          </TabsContent>
+          {isSuperAdmin && (
+            <TabsContent value="admin">
+              <AdminPanel />
+            </TabsContent>
+          )}
         </Tabs>
       </main>
     </div>
