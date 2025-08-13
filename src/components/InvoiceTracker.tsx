@@ -667,11 +667,35 @@ export function InvoiceTracker() {
           </TabsContent>
 
           <TabsContent value="finance">
-            <FinanceInterface />
+            {invoices.length > 0 ? (
+              <FinanceInterface
+                invoice={invoices[0]}
+                onUpdate={(id, updates) => handleUpdateInvoice(id, updates as any)}
+                onClose={() => {}}
+              />
+            ) : (
+              <Card>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">No invoices available.</p>
+                </CardContent>
+              </Card>
+            )}
           </TabsContent>
 
           <TabsContent value="supply-chain">
-            <SupplyChainInterface />
+            {invoices.length > 0 ? (
+              <SupplyChainInterface
+                invoice={invoices[0]}
+                onUpdate={(id, updates) => handleUpdateInvoice(id, updates as any)}
+                onClose={() => {}}
+              />
+            ) : (
+              <Card>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">No invoices available.</p>
+                </CardContent>
+              </Card>
+            )}
           </TabsContent>
 
           <TabsContent value="admin">
